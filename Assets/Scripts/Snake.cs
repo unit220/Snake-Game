@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Snake : MonoBehaviour
@@ -52,13 +52,16 @@ public class Snake : MonoBehaviour
     }
 
     private void ResetState() {
+        // destroy the snake
         for (int i=1; i< _segments.Count; i++) {
             Destroy(_segments[i].gameObject);
         }
 
+        // adds the head back to the segment list
         _segments.Clear();
         _segments.Add(this.transform);
 
+        // populates the default body size
         for (int i=1; i < this.initialSize; i++) {
             _segments.Add(Instantiate(this.segmentPrefab));
         }
