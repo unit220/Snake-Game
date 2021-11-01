@@ -6,6 +6,7 @@ public class Baddie : MonoBehaviour
 {
     public BoxCollider2D gridArea;
     public Transform spawner;
+    public GameManager gameManager;
 
     private void Start() {
         //RandomizePosition();
@@ -23,7 +24,7 @@ public class Baddie : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.tag == "Player") {
-        RandomizePosition();
+        this.gameManager.EndGame();
         }
     }
 }
