@@ -7,21 +7,28 @@ public class Snake : MonoBehaviour
     private List<Transform> _segments = new List<Transform>();
     public Transform segmentPrefab;
     public int initialSize = 3;
+    private KeyCode lastInput;
 
     void Start() {
         ResetState();
+        lastInput = KeyCode.None;
     }
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.W)) {
+        // has to be else if statements, trust me. Don't feel bad about it future me.
+        if(Input.GetKeyDown(KeyCode.W) && lastInput != KeyCode.S) {
             _direction = Vector2.up;
-        } else if (Input.GetKeyDown(KeyCode.S)) {
+            lastInput = KeyCode.W;
+        } else if (Input.GetKeyDown(KeyCode.S) && lastInput != KeyCode.W) {
             _direction = Vector2.down;
-        } else if (Input.GetKeyDown(KeyCode.A)) {
+            lastInput = KeyCode.S;
+        } else if (Input.GetKeyDown(KeyCode.A) && lastInput != KeyCode.D) {
             _direction = Vector2.left;
-        } else if (Input.GetKeyDown(KeyCode.D)) {
+            lastInput = KeyCode.A;
+        } else if (Input.GetKeyDown(KeyCode.D) && lastInput != KeyCode.A) {
             _direction = Vector2.right;
+            lastInput = KeyCode.D;
         }
     }
 
