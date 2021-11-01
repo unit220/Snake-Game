@@ -7,6 +7,7 @@ public class Snake : MonoBehaviour
     private List<Transform> _segments = new List<Transform>();
     public Transform segmentPrefab;
     public int initialSize = 3;
+    public GameManager gameManager;
     private KeyCode lastInput;
 
     void Start() {
@@ -80,7 +81,7 @@ public class Snake : MonoBehaviour
         if (other.tag == "Food") {
         Grow();
         } else if (other.tag == "Obstacle") {
-            ResetState();
+            this.gameManager.EndGame();
         }
     }
 }

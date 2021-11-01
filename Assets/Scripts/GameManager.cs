@@ -4,26 +4,27 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public bool gameEnded;
+    public static bool gameEnded;
+
+    public GameObject gameOverUI;
 
     // Start is called before the first frame update
     void Start()
     {
-        this.gameEnded = false;
-        
+        gameEnded = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (this.gameEnded) {
+        if (gameEnded) {
             Time.timeScale = 0;
         }
     }
 
     public void EndGame()
     {
-        this.gameEnded = true;
-        //this.gameOverUI.SetActive(true); TODO: Add this
+        gameEnded = true;
+        gameOverUI.SetActive(true);
     }
 }
